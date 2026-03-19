@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  FixHub – Management Dashboard
+  ============================================================================
+  Purpose : Private company dashboard for managing workers.
+            Supports Add, Edit, and Delete operations via modal dialogs.
+            Includes quick-stat cards and a data table with action controls.
+  Author  : Mohammed Dhiaa  |  Milestone 2
+  ============================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+        content="FixHub company dashboard – manage your workers, view statistics, and keep your team up to date." />
+
+  <title>Dashboard – Worker Management | FixHub</title>
+
+  <!-- Google Fonts – Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!-- =====================================================================
+       HEADER / NAVIGATION
+       ===================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+
+      <a href="index.html" class="logo" id="logo-link">
+        <span class="logo-icon">🔧</span>
+        FixHub
+      </a>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" id="main-nav">
+        <ul class="nav-links">
+          <li><a href="index.html" id="nav-home">Home</a></li>
+          <li><a href="company.html" id="nav-company">Company Profile</a></li>
+          <li><a href="dashboard.html" class="active" id="nav-dashboard">Dashboard</a></li>
+        </ul>
+        <div class="nav-auth">
+          <a href="#" class="btn btn-outline btn-sm" id="btn-login">Log In</a>
+          <a href="#" class="btn btn-primary btn-sm" id="btn-signup">Sign Up</a>
+        </div>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       DASHBOARD LAYOUT
+       ===================================================================== -->
+  <div class="dashboard-layout" id="dashboard-layout">
+
+    <!-- ---- Sidebar ---- -->
+    <aside class="dashboard-sidebar" id="dashboard-sidebar">
+      <span class="sidebar-title">Management</span>
+      <nav class="sidebar-nav">
+        <a href="#" class="sidebar-link active" id="sidebar-workers">
+          <span class="link-icon">👷</span>
+          <span>Workers</span>
+        </a>
+        <a href="#" class="sidebar-link" id="sidebar-company">
+          <span class="link-icon">🏢</span>
+          <span>Company</span>
+        </a>
+        <a href="#" class="sidebar-link" id="sidebar-services">
+          <span class="link-icon">🛠️</span>
+          <span>Services</span>
+        </a>
+        <a href="#" class="sidebar-link" id="sidebar-settings">
+          <span class="link-icon">⚙️</span>
+          <span>Settings</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- ---- Main Dashboard Content ---- -->
+    <main class="dashboard-main" id="dashboard-main">
+
+      <!-- Header Row -->
+      <div class="dashboard-header">
+        <h1>Worker Management</h1>
+        <button class="btn btn-primary" id="btn-add-worker" onclick="openAddModal()">
+          ➕ Add Worker
+        </button>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="stats-row" id="stats-row">
+
+        <div class="stat-card" id="stat-total">
+          <div class="stat-icon blue">👷</div>
+          <div class="stat-info">
+            <h3 id="stat-total-count">5</h3>
+            <p>Total Workers</p>
+          </div>
+        </div>
+
+        <div class="stat-card" id="stat-active">
+          <div class="stat-icon green">✅</div>
+          <div class="stat-info">
+            <h3 id="stat-active-count">4</h3>
+            <p>Active</p>
+          </div>
+        </div>
+
+        <div class="stat-card" id="stat-leave">
+          <div class="stat-icon orange">⏸️</div>
+          <div class="stat-info">
+            <h3 id="stat-leave-count">1</h3>
+            <p>On Leave</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Workers Table -->
+      <div class="table-card" id="workers-table-card">
+        <div class="table-card-header">
+          <h2>All Workers</h2>
+        </div>
+
+        <table class="data-table" id="workers-table">
+          <thead>
+            <tr>
+              <th>Worker</th>
+              <th>Role</th>
+              <th>Phone</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="workers-table-body">
+            <!--
+              Rows are rendered by JavaScript from the workers array (js/app.js).
+              Each row includes Edit and Delete action buttons.
+            -->
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+  </div><!-- /.dashboard-layout -->
+
+  <!-- =====================================================================
+       ADD / EDIT WORKER MODAL
+       ===================================================================== -->
+  <div class="modal-overlay" id="worker-modal-overlay">
+    <div class="modal" role="dialog" aria-labelledby="modal-title" id="worker-modal">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 id="modal-title">Add Worker</h2>
+        <button class="modal-close" id="modal-close" onclick="closeModal()" aria-label="Close">
+          ✕
+        </button>
+      </div>
+
+      <!-- Modal Body – Worker Form -->
+      <div class="modal-body">
+        <form id="worker-form" onsubmit="return false;">
+
+          <!-- Hidden field to track editing state -->
+          <input type="hidden" id="worker-edit-id" value="" />
+
+          <!-- Full Name -->
+          <div class="form-group">
+            <label for="worker-name">Full Name</label>
+            <input
+              type="text"
+              id="worker-name"
+              class="form-control"
+              placeholder="e.g. Ahmed Khalid"
+              required
+            />
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="worker-email">Email Address</label>
+            <input
+              type="email"
+              id="worker-email"
+              class="form-control"
+              placeholder="e.g. ahmed@aquaflow.com"
+              required
+            />
+          </div>
+
+          <!-- Phone -->
+          <div class="form-group">
+            <label for="worker-phone">Phone Number</label>
+            <input
+              type="tel"
+              id="worker-phone"
+              class="form-control"
+              placeholder="e.g. +1 (555) 123-4567"
+            />
+          </div>
+
+          <!-- Role / Specialisation -->
+          <div class="form-group">
+            <label for="worker-role">Role / Specialisation</label>
+            <input
+              type="text"
+              id="worker-role"
+              class="form-control"
+              placeholder="e.g. Senior Plumber"
+              required
+            />
+          </div>
+
+          <!-- Status -->
+          <div class="form-group">
+            <label for="worker-status">Status</label>
+            <select id="worker-status" class="form-control">
+              <option value="Active">Active</option>
+              <option value="On Leave">On Leave</option>
+            </select>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="modal-cancel" onclick="closeModal()">
+          Cancel
+        </button>
+        <button class="btn btn-primary" id="modal-save" onclick="saveWorker()">
+          Save Worker
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       DELETE CONFIRMATION MODAL
+       ===================================================================== -->
+  <div class="modal-overlay" id="delete-modal-overlay">
+    <div class="modal" role="dialog" aria-labelledby="delete-modal-title" id="delete-modal"
+         style="max-width: 420px;">
+      <div class="modal-header">
+        <h2 id="delete-modal-title" style="color: var(--color-danger);">⚠️ Delete Worker</h2>
+        <button class="modal-close" onclick="closeDeleteModal()" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="color: var(--color-gray-600); line-height: 1.7;">
+          Are you sure you want to remove
+          <strong id="delete-worker-name"></strong> from the team?
+          This action cannot be undone.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeDeleteModal()">Cancel</button>
+        <button class="btn btn-danger" id="btn-confirm-delete" onclick="confirmDelete()">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       SCRIPTS
+       ===================================================================== -->
+  <script src="js/app.js"></script>
+</body>
+</html>

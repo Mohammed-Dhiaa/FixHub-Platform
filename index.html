@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  FixHub – Home / Marketplace Page
+  ============================================================================
+  Purpose : Main landing page for FixHub, a local-services marketplace.
+            Features a hero section with search, category filters,
+            and a grid of featured service-company cards.
+  Author  : Mohammed Dhiaa  |  Milestone 2
+  ============================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+        content="FixHub – Find trusted local service companies for plumbing, electrical, cleaning and more. Browse, compare, and book top-rated professionals near you." />
+
+  <title>FixHub – Local Services Marketplace</title>
+
+  <!-- Google Fonts – Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!-- =====================================================================
+       HEADER / NAVIGATION
+       ===================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+
+      <!-- Logo -->
+      <a href="index.html" class="logo" id="logo-link">
+        <span class="logo-icon">🔧</span>
+        FixHub
+      </a>
+
+      <!-- Hamburger toggle (mobile) -->
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- Main Navigation -->
+      <nav class="main-nav" id="main-nav">
+        <ul class="nav-links">
+          <li><a href="index.html" class="active" id="nav-home">Home</a></li>
+          <li><a href="company.html" id="nav-company">Company Profile</a></li>
+          <li><a href="dashboard.html" id="nav-dashboard">Dashboard</a></li>
+        </ul>
+        <div class="nav-auth">
+          <a href="#" class="btn btn-outline btn-sm" id="btn-login">Log In</a>
+          <a href="#" class="btn btn-primary btn-sm" id="btn-signup">Sign Up</a>
+        </div>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       MAIN CONTENT
+       ===================================================================== -->
+  <main>
+
+    <!-- ---- Hero Section ---- -->
+    <section class="hero" id="hero-section">
+      <div class="container">
+        <h1>Find Trusted Local Services,&nbsp;Fast.</h1>
+        <p>
+          Browse top-rated companies for plumbing, electrical, cleaning, and
+          more — all in one place. Read reviews, compare prices, and book with
+          confidence.
+        </p>
+
+        <!-- Search Bar -->
+        <form class="search-bar" id="search-form" onsubmit="return false;">
+          <label for="search-input" class="sr-only">Search services</label>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search for a service or company…"
+            autocomplete="off"
+          />
+          <button type="submit" class="btn btn-primary" id="search-btn">
+            🔍 Search
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ---- Category Filters ---- -->
+    <section class="categories-section" id="categories-section">
+      <div class="container">
+        <h2>Browse by Category</h2>
+
+        <div class="category-filters" id="category-filters">
+          <!-- Each chip toggles a filter; "All" is active by default -->
+          <button class="category-chip active" data-category="all" id="chip-all">
+            <span class="chip-icon">📋</span> All
+          </button>
+          <button class="category-chip" data-category="plumbing" id="chip-plumbing">
+            <span class="chip-icon">🔧</span> Plumbing
+          </button>
+          <button class="category-chip" data-category="electrical" id="chip-electrical">
+            <span class="chip-icon">⚡</span> Electrical
+          </button>
+          <button class="category-chip" data-category="cleaning" id="chip-cleaning">
+            <span class="chip-icon">🧹</span> Cleaning
+          </button>
+          <button class="category-chip" data-category="painting" id="chip-painting">
+            <span class="chip-icon">🎨</span> Painting
+          </button>
+          <button class="category-chip" data-category="hvac" id="chip-hvac">
+            <span class="chip-icon">❄️</span> HVAC
+          </button>
+          <button class="category-chip" data-category="carpentry" id="chip-carpentry">
+            <span class="chip-icon">🪚</span> Carpentry
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- Company Cards Grid ---- -->
+    <section class="companies-section" id="companies-section">
+      <div class="container">
+        <h2>Featured Companies</h2>
+
+        <div class="company-grid" id="company-grid">
+
+          <!-- Company Card 1 -->
+          <article class="company-card" data-category="plumbing" id="card-1">
+            <div class="card-image">
+              🔧
+              <span class="card-badge">Top Rated</span>
+            </div>
+            <div class="card-body">
+              <h3>AquaFlow Plumbing</h3>
+              <span class="card-category">Plumbing</span>
+              <p>
+                Expert leak repairs, pipe installations, and emergency
+                plumbing services. Licensed &amp; insured professionals.
+              </p>
+              <div class="card-meta">
+                <span class="card-rating">⭐ 4.9</span>
+                <span class="card-location">📍 Downtown</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Company Card 2 -->
+          <article class="company-card" data-category="electrical" id="card-2">
+            <div class="card-image">
+              ⚡
+            </div>
+            <div class="card-body">
+              <h3>BrightSpark Electric</h3>
+              <span class="card-category">Electrical</span>
+              <p>
+                Residential and commercial electrical solutions — wiring,
+                panel upgrades, and smart-home installations.
+              </p>
+              <div class="card-meta">
+                <span class="card-rating">⭐ 4.8</span>
+                <span class="card-location">📍 Midtown</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Company Card 3 -->
+          <article class="company-card" data-category="cleaning" id="card-3">
+            <div class="card-image">
+              🧹
+              <span class="card-badge">Verified</span>
+            </div>
+            <div class="card-body">
+              <h3>SparkleClean Co.</h3>
+              <span class="card-category">Cleaning</span>
+              <p>
+                Deep cleaning, move-in/move-out services, and regular
+                maintenance for homes and offices.
+              </p>
+              <div class="card-meta">
+                <span class="card-rating">⭐ 4.7</span>
+                <span class="card-location">📍 Westside</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Company Card 4 -->
+          <article class="company-card" data-category="painting" id="card-4">
+            <div class="card-image">
+              🎨
+            </div>
+            <div class="card-body">
+              <h3>ColorCraft Painters</h3>
+              <span class="card-category">Painting</span>
+              <p>
+                Interior and exterior painting with premium paints. Free
+                color consultations and on-time delivery.
+              </p>
+              <div class="card-meta">
+                <span class="card-rating">⭐ 4.6</span>
+                <span class="card-location">📍 Northside</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Company Card 5 -->
+          <article class="company-card" data-category="hvac" id="card-5">
+            <div class="card-image">
+              ❄️
+              <span class="card-badge">24/7</span>
+            </div>
+            <div class="card-body">
+              <h3>CoolBreeze HVAC</h3>
+              <span class="card-category">HVAC</span>
+              <p>
+                AC installation, furnace repair, and duct cleaning. Same-day
+                emergency service available around the clock.
+              </p>
+              <div class="card-meta">
+                <span class="card-rating">⭐ 4.8</span>
+                <span class="card-location">📍 Eastside</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Company Card 6 -->
+          <article class="company-card" data-category="carpentry" id="card-6">
+            <div class="card-image">
+              🪚
+            </div>
+            <div class="card-body">
+              <h3>TimberWorks Carpentry</h3>
+              <span class="card-category">Carpentry</span>
+              <p>
+                Custom furniture, cabinetry, and structural woodwork. Handcrafted
+                quality with modern precision.
+              </p>
+              <div class="card-meta">
+                <span class="card-rating">⭐ 4.9</span>
+                <span class="card-location">📍 Suburbs</span>
+              </div>
+            </div>
+          </article>
+
+        </div><!-- /.company-grid -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================================
+       FOOTER
+       ===================================================================== -->
+  <footer class="site-footer" id="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Brand Column -->
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="color: var(--color-gray-200);">
+            <span class="logo-icon">🔧</span> FixHub
+          </a>
+          <p>
+            Connecting communities with trusted local service professionals
+            since&nbsp;2024. Quality you can count&nbsp;on.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="company.html">Company Profile</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+          </ul>
+        </div>
+
+        <!-- Categories -->
+        <div>
+          <h4 class="footer-heading">Categories</h4>
+          <ul class="footer-links">
+            <li><a href="#">Plumbing</a></li>
+            <li><a href="#">Electrical</a></li>
+            <li><a href="#">Cleaning</a></li>
+            <li><a href="#">HVAC</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h4 class="footer-heading">Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:support@fixhub.com">support@fixhub.com</a></li>
+            <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+            <li><a href="#">Help Center</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <span>&copy; 2024 FixHub. All rights reserved.</span>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">🌐</a>
+          <a href="#" aria-label="Twitter">🐦</a>
+          <a href="#" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       SCRIPTS
+       ===================================================================== -->
+  <script src="js/app.js"></script>
+</body>
+</html>

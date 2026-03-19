@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  FixHub – Company Profile Page
+  ============================================================================
+  Purpose : Detailed public-facing profile for a single service company.
+            Shows company information (about, contact, location) and
+            a list of workers belonging to the company.
+  Author  : Mohammed Dhiaa  |  Milestone 2
+  ============================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+        content="AquaFlow Plumbing – Licensed plumbing professionals on FixHub. View our team, services, and contact details." />
+
+  <title>AquaFlow Plumbing – Company Profile | FixHub</title>
+
+  <!-- Google Fonts – Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!-- =====================================================================
+       HEADER / NAVIGATION
+       ===================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+
+      <a href="index.html" class="logo" id="logo-link">
+        <span class="logo-icon">🔧</span>
+        FixHub
+      </a>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" id="main-nav">
+        <ul class="nav-links">
+          <li><a href="index.html" id="nav-home">Home</a></li>
+          <li><a href="company.html" class="active" id="nav-company">Company Profile</a></li>
+          <li><a href="dashboard.html" id="nav-dashboard">Dashboard</a></li>
+        </ul>
+        <div class="nav-auth">
+          <a href="#" class="btn btn-outline btn-sm" id="btn-login">Log In</a>
+          <a href="#" class="btn btn-primary btn-sm" id="btn-signup">Sign Up</a>
+        </div>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       MAIN CONTENT
+       ===================================================================== -->
+  <main>
+
+    <!-- ---- Profile Hero ---- -->
+    <section class="profile-hero" id="profile-hero">
+      <div class="container">
+        <div class="profile-hero-content">
+
+          <!-- Company avatar / icon -->
+          <div class="profile-avatar" id="profile-avatar">🔧</div>
+
+          <!-- Company info -->
+          <div class="profile-info">
+            <h1 id="profile-name">AquaFlow Plumbing</h1>
+            <p class="profile-tagline" id="profile-tagline">
+              Licensed &amp; Insured Plumbing Professionals
+            </p>
+
+            <!-- Quick stats -->
+            <div class="profile-stats">
+              <span class="profile-stat" id="stat-rating">
+                ⭐ <strong>4.9</strong>&nbsp;Rating
+              </span>
+              <span class="profile-stat" id="stat-workers">
+                👷 <strong>5</strong>&nbsp;Workers
+              </span>
+              <span class="profile-stat" id="stat-jobs">
+                ✅ <strong>320</strong>&nbsp;Jobs Done
+              </span>
+              <span class="profile-stat" id="stat-since">
+                📅 Since&nbsp;<strong>2018</strong>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- Profile Body (Two-column layout) ---- -->
+    <div class="profile-body container" id="profile-body">
+
+      <!-- -------- Left Column: About & Workers -------- -->
+      <div>
+
+        <!-- About Card -->
+        <div class="profile-card" id="about-card" style="margin-bottom: var(--space-6);">
+          <h2>📄 About the Company</h2>
+          <p>
+            AquaFlow Plumbing has served the local community for over six
+            years, delivering reliable plumbing solutions for residential
+            and commercial properties. Our team of certified technicians
+            specialises in leak detection, pipe installation, water-heater
+            repair, and bathroom renovations. We pride ourselves on
+            transparent pricing, punctual arrivals, and a 100%&nbsp;satisfaction
+            guarantee on every job.
+          </p>
+        </div>
+
+        <!-- Workers Card -->
+        <div class="profile-card" id="workers-card">
+          <h2>👷 Our Team</h2>
+
+          <div class="workers-list" id="workers-list">
+
+            <!-- Worker 1 -->
+            <div class="worker-card" id="worker-1">
+              <div class="worker-avatar">AK</div>
+              <div class="worker-info">
+                <h4>Ahmed Khalid</h4>
+                <span>Senior Plumber · 8 yrs experience</span>
+              </div>
+            </div>
+
+            <!-- Worker 2 -->
+            <div class="worker-card" id="worker-2">
+              <div class="worker-avatar">SN</div>
+              <div class="worker-info">
+                <h4>Sara Nasser</h4>
+                <span>Plumber · 5 yrs experience</span>
+              </div>
+            </div>
+
+            <!-- Worker 3 -->
+            <div class="worker-card" id="worker-3">
+              <div class="worker-avatar">OM</div>
+              <div class="worker-info">
+                <h4>Omar Mansour</h4>
+                <span>Pipe Fitter · 6 yrs experience</span>
+              </div>
+            </div>
+
+            <!-- Worker 4 -->
+            <div class="worker-card" id="worker-4">
+              <div class="worker-avatar">LH</div>
+              <div class="worker-info">
+                <h4>Lina Hassan</h4>
+                <span>Apprentice Plumber · 2 yrs experience</span>
+              </div>
+            </div>
+
+            <!-- Worker 5 -->
+            <div class="worker-card" id="worker-5">
+              <div class="worker-avatar">YA</div>
+              <div class="worker-info">
+                <h4>Yusuf Ali</h4>
+                <span>Emergency Technician · 4 yrs experience</span>
+              </div>
+            </div>
+
+          </div><!-- /.workers-list -->
+        </div><!-- /.profile-card -->
+
+      </div><!-- / Left Column -->
+
+      <!-- -------- Right Column: Sidebar Info -------- -->
+      <aside>
+        <!-- Contact & Details Card -->
+        <div class="profile-card" id="contact-card">
+          <h2>📋 Company Details</h2>
+
+          <div class="sidebar-info">
+
+            <div class="sidebar-info-item">
+              <span class="info-icon">📍</span>
+              <span>123 Main Street, Downtown</span>
+            </div>
+
+            <div class="sidebar-info-item">
+              <span class="info-icon">📞</span>
+              <span>+1 (234) 567-890</span>
+            </div>
+
+            <div class="sidebar-info-item">
+              <span class="info-icon">✉️</span>
+              <span>contact@aquaflow.com</span>
+            </div>
+
+            <div class="sidebar-info-item">
+              <span class="info-icon">🕐</span>
+              <span>Mon – Sat: 8 AM – 6 PM</span>
+            </div>
+
+            <div class="sidebar-info-item">
+              <span class="info-icon">🏷️</span>
+              <span>Plumbing</span>
+            </div>
+
+          </div><!-- /.sidebar-info -->
+
+          <!-- CTA Button -->
+          <div style="margin-top: var(--space-6);">
+            <a href="#" class="btn btn-primary btn-lg" id="btn-request-service"
+               style="width: 100%; text-align: center;">
+              Request Service
+            </a>
+          </div>
+        </div>
+      </aside>
+
+    </div><!-- /.profile-body -->
+  </main>
+
+  <!-- =====================================================================
+       FOOTER
+       ===================================================================== -->
+  <footer class="site-footer" id="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="color: var(--color-gray-200);">
+            <span class="logo-icon">🔧</span> FixHub
+          </a>
+          <p>
+            Connecting communities with trusted local service professionals
+            since&nbsp;2024. Quality you can count&nbsp;on.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="company.html">Company Profile</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Categories</h4>
+          <ul class="footer-links">
+            <li><a href="#">Plumbing</a></li>
+            <li><a href="#">Electrical</a></li>
+            <li><a href="#">Cleaning</a></li>
+            <li><a href="#">HVAC</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:support@fixhub.com">support@fixhub.com</a></li>
+            <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+            <li><a href="#">Help Center</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2024 FixHub. All rights reserved.</span>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">🌐</a>
+          <a href="#" aria-label="Twitter">🐦</a>
+          <a href="#" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+</body>
+</html>
