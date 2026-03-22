@@ -69,6 +69,11 @@
 
     <!-- ---- Hero Section ---- -->
     <section class="hero" id="hero-section">
+      <!-- Floating decorative blobs -->
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+
       <div class="container">
         <h1>Find Trusted Local Services,&nbsp;Fast.</h1>
         <p>
@@ -77,7 +82,7 @@
           confidence.
         </p>
 
-        <!-- Search Bar -->
+        <!-- Search Bar (Frosted Glass) -->
         <form class="search-bar" id="search-form" onsubmit="return false;">
           <label for="search-input" class="sr-only">Search services</label>
           <input
@@ -125,6 +130,34 @@
       </div>
     </section>
 
+    <!-- ---- How It Works ---- -->
+    <section class="how-it-works" id="how-it-works">
+      <div class="container">
+        <h2>How It Works</h2>
+        <p class="section-subtitle">
+          Getting started is easy. Find, compare, and book a service in three simple steps.
+        </p>
+
+        <div class="steps-grid">
+          <div class="step-card reveal">
+            <div class="step-number">1</div>
+            <h3>Search</h3>
+            <p>Browse our marketplace for the service you need or discover top-rated companies nearby.</p>
+          </div>
+          <div class="step-card reveal reveal-delay-1">
+            <div class="step-number">2</div>
+            <h3>Compare</h3>
+            <p>Read reviews, check ratings, and compare pricing from multiple verified professionals.</p>
+          </div>
+          <div class="step-card reveal reveal-delay-2">
+            <div class="step-number">3</div>
+            <h3>Book</h3>
+            <p>Request a service directly through the platform and get the job done with confidence.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ---- Company Cards Grid ---- -->
     <section class="companies-section" id="companies-section">
       <div class="container">
@@ -133,7 +166,7 @@
         <div class="company-grid" id="company-grid">
 
           <!-- Company Card 1 -->
-          <article class="company-card" data-category="plumbing" id="card-1">
+          <article class="company-card reveal" data-category="plumbing" id="card-1">
             <div class="card-image">
               🔧
               <span class="card-badge">Top Rated</span>
@@ -153,7 +186,7 @@
           </article>
 
           <!-- Company Card 2 -->
-          <article class="company-card" data-category="electrical" id="card-2">
+          <article class="company-card reveal reveal-delay-1" data-category="electrical" id="card-2">
             <div class="card-image">
               ⚡
             </div>
@@ -172,7 +205,7 @@
           </article>
 
           <!-- Company Card 3 -->
-          <article class="company-card" data-category="cleaning" id="card-3">
+          <article class="company-card reveal reveal-delay-2" data-category="cleaning" id="card-3">
             <div class="card-image">
               🧹
               <span class="card-badge">Verified</span>
@@ -192,7 +225,7 @@
           </article>
 
           <!-- Company Card 4 -->
-          <article class="company-card" data-category="painting" id="card-4">
+          <article class="company-card reveal reveal-delay-3" data-category="painting" id="card-4">
             <div class="card-image">
               🎨
             </div>
@@ -211,7 +244,7 @@
           </article>
 
           <!-- Company Card 5 -->
-          <article class="company-card" data-category="hvac" id="card-5">
+          <article class="company-card reveal reveal-delay-4" data-category="hvac" id="card-5">
             <div class="card-image">
               ❄️
               <span class="card-badge">24/7</span>
@@ -231,7 +264,7 @@
           </article>
 
           <!-- Company Card 6 -->
-          <article class="company-card" data-category="carpentry" id="card-6">
+          <article class="company-card reveal reveal-delay-5" data-category="carpentry" id="card-6">
             <div class="card-image">
               🪚
             </div>

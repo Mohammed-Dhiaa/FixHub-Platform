@@ -2,10 +2,12 @@
  * ============================================================================
  * FixHub – Main JavaScript (app.js)
  * ============================================================================
- * Handles three concerns:
+ * Handles five concerns:
  *   1. Mobile navigation toggle (all pages)
  *   2. Category filter chips (Home / Marketplace)
  *   3. Worker CRUD operations (Dashboard – Add / Edit / Delete)
+ *   4. Scroll-reveal animations (IntersectionObserver)
+ *   5. Counter count-up animation (Dashboard stats)
  *
  * Author : Mohammed Dhiaa  |  Milestone 2
  * ============================================================================
@@ -31,6 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===== Initialise page-specific features =====
   initCategoryFilters();
   initDashboard();
+  initScrollReveal();
+  initCounterAnimation();
 });
 
 
@@ -183,9 +187,13 @@ function updateStats() {
   const activeEl = document.getElementById('stat-active-count');
   const leaveEl  = document.getElementById('stat-leave-count');
 
-  if (totalEl)  totalEl.textContent  = workers.length;
-  if (activeEl) activeEl.textContent = workers.filter(w => w.status === 'Active').length;
-  if (leaveEl)  leaveEl.textContent  = workers.filter(w => w.status === 'On Leave').length;
+  const totalVal  = workers.length;
+  const activeVal = workers.filter(w => w.status === 'Active').length;
+  const leaveVal  = workers.filter(w => w.status === 'On Leave').length;
+
+  if (totalEl)  totalEl.textContent  = totalVal;
+  if (activeEl) activeEl.textContent = activeVal;
+  if (leaveEl)  leaveEl.textContent  = leaveVal;
 }
 
 
@@ -299,4 +307,87 @@ function confirmDelete() {
     renderWorkers();
   }
   closeDeleteModal();
+}
+
+
+// ============================================================================
+// 4. SCROLL-REVEAL ANIMATIONS  (IntersectionObserver)
+// ============================================================================
+/**
+ * Initialises scroll-reveal animations using IntersectionObserver.
+ * Elements with the `.reveal` class start invisible and animate in
+ * when they enter the viewport (threshold: 15%).
+ */
+function initScrollReveal() {
+  const revealElements = document.querySelectorAll('.reveal');
+  if (revealElements.length === 0) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // Animate once only
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  revealElements.forEach(el => observer.observe(el));
+}
+
+
+// ============================================================================
+// 5. COUNTER COUNT-UP ANIMATION
+// ============================================================================
+/**
+ * Animates `.counter` elements from 0 to their `data-target` value.
+ * Uses IntersectionObserver so counters animate when scrolled into view.
+ */
+function initCounterAnimation() {
+  const counters = document.querySelectorAll('.counter');
+  if (counters.length === 0) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  counters.forEach(counter => observer.observe(counter));
+}
+
+/**
+ * Animates a single counter element from 0 to its target value.
+ * @param {HTMLElement} el – Counter element with data-target attribute.
+ */
+function animateCounter(el) {
+  const target = parseInt(el.getAttribute('data-target'), 10);
+  const duration = 1200; // ms
+  const startTime = performance.now();
+
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    // Ease-out cubic for smooth deceleration
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const currentValue = Math.round(eased * target);
+
+    el.textContent = currentValue;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      el.textContent = target; // Ensure exact final value
+    }
+  }
+
+  requestAnimationFrame(update);
 }

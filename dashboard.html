@@ -90,6 +90,9 @@
     <!-- ---- Main Dashboard Content ---- -->
     <main class="dashboard-main" id="dashboard-main">
 
+      <!-- Welcome Greeting -->
+      <p class="dashboard-welcome" id="dashboard-welcome">Welcome back, Admin 👋</p>
+
       <!-- Header Row -->
       <div class="dashboard-header">
         <h1>Worker Management</h1>
@@ -101,26 +104,26 @@
       <!-- Quick Stats -->
       <div class="stats-row" id="stats-row">
 
-        <div class="stat-card" id="stat-total">
+        <div class="stat-card reveal" id="stat-total">
           <div class="stat-icon blue">👷</div>
           <div class="stat-info">
-            <h3 id="stat-total-count">5</h3>
+            <h3 id="stat-total-count"><span class="counter" data-target="5">0</span></h3>
             <p>Total Workers</p>
           </div>
         </div>
 
-        <div class="stat-card" id="stat-active">
+        <div class="stat-card reveal reveal-delay-1" id="stat-active">
           <div class="stat-icon green">✅</div>
           <div class="stat-info">
-            <h3 id="stat-active-count">4</h3>
+            <h3 id="stat-active-count"><span class="counter" data-target="4">0</span></h3>
             <p>Active</p>
           </div>
         </div>
 
-        <div class="stat-card" id="stat-leave">
+        <div class="stat-card reveal reveal-delay-2" id="stat-leave">
           <div class="stat-icon orange">⏸️</div>
           <div class="stat-info">
-            <h3 id="stat-leave-count">1</h3>
+            <h3 id="stat-leave-count"><span class="counter" data-target="1">0</span></h3>
             <p>On Leave</p>
           </div>
         </div>
@@ -128,7 +131,7 @@
       </div>
 
       <!-- Workers Table -->
-      <div class="table-card" id="workers-table-card">
+      <div class="table-card reveal" id="workers-table-card">
         <div class="table-card-header">
           <h2>All Workers</h2>
         </div>
